@@ -6,7 +6,7 @@ public class PlayerSounds : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		// soundz
+		// this is a sound or something
 	}
 	
 	// Update is called once per frame
