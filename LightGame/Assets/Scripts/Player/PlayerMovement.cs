@@ -38,11 +38,16 @@ public class PlayerMovement : MonoBehaviour {
 	//but being kept for now
 	private bool canClimb;
 
+	// PlayerObjectInteraction.cs is on the same Player object as this script
+	private PlayerObjectInteraction interaction;
+
 
 	void Start() 
 	{
 		// Get animator component
 		anim = GetComponent<Animator> ();
+		// Get object interaction component
+		interaction = GetComponent<PlayerObjectInteraction>();
 
 		isGrounded = false;
 		canJump = false;
@@ -57,7 +62,7 @@ public class PlayerMovement : MonoBehaviour {
 		float jumping = Input.GetAxisRaw ("Jump");
 
 		//if the player is grounded (on ground or a jumpable object)
-		if (isGrounded) 
+		if (isGrounded && !interaction.get_isPushing()) 
 		{
 			//since the player is grounded, report the horizontal speed to the animator
 			anim.SetFloat ("hSpeed", rigidbody2D.velocity.x );

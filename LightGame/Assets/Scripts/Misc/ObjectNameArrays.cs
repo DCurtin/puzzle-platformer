@@ -11,29 +11,33 @@ using System.Collections;
 
 namespace misc
 {
+	public class ObjectNameArrays
+	{
+		private string[] ClimableArray = {"Box","Ladder"};
+		private string[] JumpableArray = {"Ground", "Box"};
+		private string[] PickUpArray = {"Temp"};
 
-		public class ObjectNameArrays
+		// Metzger additions 3/6
+		private string[] PushableArray = {"Box"};				// pushables (logs, etc)
+
+		public string[]	Climable()
 		{
-
-			private string[] ClimableArray = {"Box","Ladder"};
-			private string[] JumpableArray = {"Ground", "Box"};
-			private string[] PickUpArray = {"Temp"};
-
-			public string[]	Climable()
-			{
-				return ClimableArray;
-			}
-			
-			public string[]	Jumpable()
-			{
-				return JumpableArray;
-			}
-			
-			public string[]	PickUp()
-			{
-				return PickUpArray;
-			}
-			
+			return ClimableArray;
 		}
-
+		
+		public string[]	Jumpable()
+		{
+			return JumpableArray;
+		}
+		
+		public string[]	PickUp()
+		{
+			return PickUpArray;
+		}
+		
+		public string[]	Pushable()
+		{
+			return PushableArray;
+		}
+	}
 }
