@@ -3,6 +3,8 @@
  * 3/6 - it's on FlashlightMover 
  */
 
+// test comment
+
 using UnityEngine;
 using System.Collections;
 
