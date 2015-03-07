@@ -14,7 +14,7 @@ namespace misc
 	public class ObjectNameArrays
 	{
 		private string[] ClimableArray = {"Box","Ladder"};
-		private string[] JumpableArray = {"Ground", "Box"};
+		private string[] JumpableArray = {"Ground", "Box", "Platform"};
 		private string[] PickUpArray = {"Temp"};
 
 		// Metzger additions 3/6

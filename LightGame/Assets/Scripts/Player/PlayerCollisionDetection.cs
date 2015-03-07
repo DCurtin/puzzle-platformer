@@ -25,11 +25,12 @@ public class PlayerCollisionDetection : MonoBehaviour {
 		return canJump;
 	}
 
-	void OnTriggerEnter2D(Collider2D other) 
+	void OnTriggerStay2D(Collider2D other) 
 	{
 		// check if it's one of the objects player can jump off
 		foreach (string jumpable in JumpableArray) 
 		{
+
 			// if it is, allow player to jump
 			if(other.name == jumpable)
 			{
@@ -44,6 +45,7 @@ public class PlayerCollisionDetection : MonoBehaviour {
 		{
 			if(other.name == jumpable)
 			{
+	
 				player.setIsgrounded(false);
 			}
 		}
