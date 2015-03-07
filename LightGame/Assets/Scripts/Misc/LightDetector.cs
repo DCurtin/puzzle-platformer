@@ -3,7 +3,7 @@ using System.Collections;
 
 /// <LightDetector>
 /// This script requires a 2D colider on it's own object
-/// and a door object with a door script to be assigned as 
+/// and a door object with a liftScript to be assigned as 
 /// one of it's variables. It also requires a colider attached 
 /// to an object named "Flashlight" that will overlap with 
 /// this object's collider; the flashlight collider will probably 
