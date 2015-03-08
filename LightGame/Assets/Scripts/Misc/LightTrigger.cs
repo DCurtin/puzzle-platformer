@@ -27,8 +27,11 @@ public class LightTrigger : MonoBehaviour {
 
 	}
 
+
 	void Update()
 	{
+		//set the bound liftscrip to open or closed based on
+		//the triggers onState
 		if (onState) {
 
 			liftScript.isOpen = true;
@@ -51,6 +54,9 @@ public class LightTrigger : MonoBehaviour {
 	//it's onTimer bool is true
 	public void setStateFalse()
 	{
+		//if any other coroutines are running,
+		//stop them and if onTimer is set true
+		//create a new coroutine with a fresh timer.
 		StopAllCoroutines();
 		if (onTimer) {
 			StartCoroutine ("timer");
@@ -63,7 +69,9 @@ public class LightTrigger : MonoBehaviour {
 	}
 			
 		
-
+	//this is a coroutine that when run will pause for a given time before
+	//changing the onState to false. This function is used for switches that 
+	//can be toggled
 	IEnumerator timer() {
 		yield return new WaitForSeconds(waitTime);
 		onState = false;
