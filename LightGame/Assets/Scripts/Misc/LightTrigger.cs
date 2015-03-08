@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/// <LightDetector>
+/// <LightTrigger>
 /// This script requires a 2D colider on it's own object
 /// and a door object with a liftScript to be assigned as 
-/// one of it's variables. It also requires a colider attached 
-/// to an object named "Flashlight" that will overlap with 
-/// this object's collider; the flashlight collider will probably 
-/// be a polygon collider made in the shape of the flashlight's beam. 
+/// one of it's variables. 
 /// 
-/// Note: Using polygon colider allows triggering through walls, a
-/// fix or alternative method should be considered
+/// When hit by a raycast light source; which is typically
+/// the player's flashlight. It's onState will be triggered 
+/// by the flashlight
 /// </LightDetector>
 
 
-public class LightDetector : MonoBehaviour {
+public class LightTrigger : MonoBehaviour {
 
 	public bool onTimer = false;
 	public int waitTime = 5;
@@ -43,29 +41,28 @@ public class LightDetector : MonoBehaviour {
 
 
 	// Use this for initialization
-	void OnTriggerEnter2D(Collider2D other) 
+	public void setStateTrue()
 	{
 
-		if (other.name == "Flashlight") 
-		{
 			onState = true;
-
-		}
-
 	}
 
-	void OnTriggerExit2D(Collider2D other) 
+	//A light trigger can only be set false if
+	//it's onTimer bool is true
+	public void setStateFalse()
 	{
-		if (other.gameObject.name == "Flashlight") 
-		{
-			if(onTimer)
-			{
-				StartCoroutine("timer");
-			}
-			
+		StopAllCoroutines();
+		if (onTimer) {
+			StartCoroutine ("timer");
 		}
-		
 	}
+
+	public bool getOnState()
+	{
+		return onState;
+	}
+			
+		
 
 	IEnumerator timer() {
 		yield return new WaitForSeconds(waitTime);

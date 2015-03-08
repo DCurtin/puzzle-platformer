@@ -44,7 +44,12 @@ public class LiftScript : MonoBehaviour {
 		{
 			closeDoor ();
 		}
+	}
 
+	void OnCollisionTriggerD(Collision2D coll) 
+	{
+		print (coll.gameObject.name);
+		
 	}
 
 	void openDoor()
