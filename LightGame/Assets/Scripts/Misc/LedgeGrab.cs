@@ -50,7 +50,7 @@ public class LedgeGrab : MonoBehaviour {
 		//set ledge climb state to activate climb animation
 		playerAnim.SetBool("ledgeClimb", true);
 		//make the rigidbody kinematic for a smoother transition (may not be necessary)
-		player.rigidbody2D.isKinematic = true;
+		player.GetComponent<Rigidbody2D>().isKinematic = true;
 
 		//get position of sensor (trigger)
 		Vector2 sensor = transform.position;
@@ -71,7 +71,7 @@ public class LedgeGrab : MonoBehaviour {
 		//the player should no longer be climbing
 		playerAnim.SetBool("ledgeClimb", false);
 		//and the rigidbody's kinematic option can be removed
-		player.rigidbody2D.isKinematic = false;
+		player.GetComponent<Rigidbody2D>().isKinematic = false;
 
 
 	}

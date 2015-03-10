@@ -62,7 +62,7 @@ public class PlayerObjectInteraction : MonoBehaviour
 			// if player acting, move with player
 			if(coll.gameObject.name == pushable && 
 			   isActing && 
-			   Mathf.Abs(rigidbody2D.velocity.x) < speedCap)
+			   Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) < speedCap)
 			{
 				isPushing = true;
 
@@ -73,12 +73,12 @@ public class PlayerObjectInteraction : MonoBehaviour
 					if (transform.position.x < collPos)
 					{
 						// apply force to collider
-						coll.gameObject.rigidbody2D.AddForce(new Vector3(-250f,0,0));
+						coll.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(-250f,0,0));
 					}
 					else // (C,P)
 					{
 						// apply force to player
-						rigidbody2D.AddForce(new Vector3(-250f,0,0));
+						GetComponent<Rigidbody2D>().AddForce(new Vector3(-250f,0,0));
 					}
 				}
 				// moving right
@@ -88,12 +88,12 @@ public class PlayerObjectInteraction : MonoBehaviour
 					if (transform.position.x < collPos)
 					{
 						// apply force to player
-						rigidbody2D.AddForce(new Vector3(250f,0,0));
+						GetComponent<Rigidbody2D>().AddForce(new Vector3(250f,0,0));
 					}
 					else // (C,P)
 					{
 						// apply force to collider
-						coll.gameObject.rigidbody2D.AddForce(new Vector3(250f,0,0));
+						coll.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(250f,0,0));
 					}
 				}
 			}

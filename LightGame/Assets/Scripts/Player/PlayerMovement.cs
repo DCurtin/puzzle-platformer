@@ -65,14 +65,14 @@ public class PlayerMovement : MonoBehaviour {
 		if (isGrounded && !interaction.get_isPushing()) 
 		{
 			//since the player is grounded, report the horizontal speed to the animator
-			anim.SetFloat ("hSpeed", rigidbody2D.velocity.x );
+			anim.SetFloat ("hSpeed", GetComponent<Rigidbody2D>().velocity.x );
 
 			//this is possibly a temporary way of applying a "friction" or apposing force to a player to reduce sliding
 			//it should only be applied when the user is moving left or right while grounded
-			if(Mathf.Abs(rigidbody2D.velocity.x) > 0f)
+			if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > 0f)
 			{
 				//friction variable is public and editable from the UI
-				rigidbody2D.AddForce( new Vector2( (rigidbody2D.velocity.x)/(-friction) , rigidbody2D.velocity.y));
+				GetComponent<Rigidbody2D>().AddForce( new Vector2( (GetComponent<Rigidbody2D>().velocity.x)/(-friction) , GetComponent<Rigidbody2D>().velocity.y));
 			}
 			//if the player is pressing left or right while grounded 
 			if((Mathf.Abs(running)) > 0f)
@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (!isGrounded) 
 		{
 			//update vertical velocity
-			anim.SetFloat ("vSpeed", rigidbody2D.velocity.y );
+			anim.SetFloat ("vSpeed", GetComponent<Rigidbody2D>().velocity.y );
 		}
 	}
 
@@ -103,20 +103,20 @@ public class PlayerMovement : MonoBehaviour {
 		anim.SetBool("isGrounded", false);
 		
 		// Use AddForce to allow gravity to affect descent
-		rigidbody2D.AddForce( new Vector2(Input.GetAxisRaw("Horizontal"), jumpForce * Input.GetAxisRaw("Jump")), ForceMode2D.Impulse);
+		GetComponent<Rigidbody2D>().AddForce( new Vector2(Input.GetAxisRaw("Horizontal"), jumpForce * Input.GetAxisRaw("Jump")), ForceMode2D.Impulse);
 	}
 
 	void run(float running)
 	{
 		//if the player is moving below the speedcap in either direction
 		//speedCap is public and editable in the UI
-		if(Mathf.Abs(rigidbody2D.velocity.x) < speedCap)
+		if(Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) < speedCap)
 		{
 			//activate the running bool
 			anim.SetBool("isRunning", true);
 			//add force either to the left or right of the player
 			//AccelMulti is public and editable in the UI
-			rigidbody2D.AddForce( new Vector2(running * AccelMulti, 0f)); //recently changed **** set y to 0
+			GetComponent<Rigidbody2D>().AddForce( new Vector2(running * AccelMulti, 0f)); //recently changed **** set y to 0
 		}
 	}
 
