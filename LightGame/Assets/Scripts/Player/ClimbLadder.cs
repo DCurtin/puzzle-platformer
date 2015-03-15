@@ -52,8 +52,8 @@ public class ClimbLadder : MonoBehaviour {
 			//set climbing, Animator, cut any current velocity to eliminate sliding, set gravity to 0 
 			isClimbing = true;
 			playerAnim.SetBool("climbingLadder", true);
-			player.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-			player.GetComponent<Rigidbody2D>().gravityScale = 0;
+			player.rigidbody2D.velocity = new Vector2(0f, 0f);
+			player.rigidbody2D.gravityScale = 0;
 
 		}
 		if(isClimbing)
